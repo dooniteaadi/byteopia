@@ -25,12 +25,34 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-[linear-gradient(rgba(0,240,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,240,255,0.05)_1px,transparent_1px)] bg-[size:50px_50px]" />
       </div>
 
-      <div className="container relative z-10 mx-auto px-6 text-center">
+      <div className="container relative z-10 mx-auto px-6 text-center flex flex-col items-center">
+        <motion.div
+          className="flex flex-col items-center mb-3 md:mb-5"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <motion.h2 
+            className="text-[var(--color-neon-cyan)] text-xs md:text-sm lg:text-base tracking-[0.4em] uppercase font-bold opacity-90"
+            animate={{ textShadow: ["0 0 8px rgba(0, 240, 255, 0.4)", "0 0 16px rgba(0, 240, 255, 0.8)", "0 0 8px rgba(0, 240, 255, 0.4)"] }}
+            transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+          >
+            School of Technology Presents
+          </motion.h2>
+          <motion.div 
+            className="w-[140%] max-w-[400px] h-[1px] mt-4 bg-gradient-to-r from-transparent via-[var(--color-neon-cyan)] to-transparent"
+            style={{ boxShadow: "0 0 8px var(--color-neon-cyan)" }}
+            initial={{ scaleX: 0, opacity: 0 }}
+            animate={{ scaleX: 1, opacity: 0.6 }}
+            transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+          />
+        </motion.div>
+
         <motion.h1 
           className="text-6xl md:text-8xl lg:text-9xl font-black mb-6 text-glow tracking-tighter"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
         >
           BYTEOPIA
         </motion.h1>
@@ -39,7 +61,7 @@ const HeroSection = () => {
           className="text-xl md:text-3xl text-gray-300 font-light tracking-wide mb-10"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
         >
           Code. Create. Compete. <span className="text-[var(--color-neon-pink)] font-semibold text-glow-pink">Celebrate.</span>
         </motion.p>
@@ -48,7 +70,7 @@ const HeroSection = () => {
           className="flex flex-col sm:flex-row items-center justify-center gap-6"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
         >
           <a 
             href="#events" 
