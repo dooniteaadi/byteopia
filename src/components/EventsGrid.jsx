@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import { Lightbulb, Terminal, Map, Rocket, Video, Music, EyeOff, Gamepad2 } from 'lucide-react';
 
-const EventCard = ({ event, delay, isMobile }) => {
-  const { title, description, icon: Icon, color, link } = event;
+const EventCard = ({ event, delay, isMobile, onRegisterClick }) => {
+  const { title, description, tagline, icon: Icon, color, link } = event;
   const isCyan = color === 'cyan';
   const glowClass = isCyan ? 'box-glow hover:border-[var(--color-neon-cyan)]' : 'box-glow-pink hover:border-[var(--color-neon-pink)]';
   const textGlowClass = isCyan ? 'text-glow text-[var(--color-neon-cyan)]' : 'text-glow-pink text-[var(--color-neon-pink)]';
@@ -66,16 +66,24 @@ const EventCard = ({ event, delay, isMobile }) => {
           {title}
         </h3>
         
-        <p className="text-gray-400 mb-8 flex-grow transition-colors group-hover:text-white">
+        <p className="text-gray-400 mb-2 flex-grow transition-colors group-hover:text-white relative z-10 text-sm">
           {description}
         </p>
+
+        {tagline && (
+          <p className="text-[var(--color-neon-pink)] italic mb-6 text-xs md:text-sm font-medium z-10 opacity-80 backdrop-blur-sm bg-black/20 rounded p-2 border border-pink-500/20">
+            "{tagline}"
+          </p>
+        )}
 
         <div className="flex flex-col space-y-3 mt-auto relative z-20">
           <a 
             href={link} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className={`w-full py-3 px-6 text-center border font-bold uppercase tracking-widest transition-all duration-300 relative overflow-hidden group/link ${
+            onClick={(e) => {
+              e.preventDefault();
+              onRegisterClick(link);
+            }}
+            className={`w-full py-3 px-6 text-center border font-bold uppercase tracking-widest transition-all duration-300 relative overflow-hidden group/link cursor-pointer ${
               isCyan 
                 ? 'border-[var(--color-neon-cyan)] text-[var(--color-neon-cyan)] hover:text-[var(--color-dark-bg)] hover:bg-[var(--color-neon-cyan)]' 
                 : 'border-[var(--color-neon-pink)] text-[var(--color-neon-pink)] hover:text-[var(--color-dark-bg)] hover:bg-[var(--color-neon-pink)]'
@@ -92,6 +100,7 @@ const EventCard = ({ event, delay, isMobile }) => {
 
 const EventsGrid = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [selectedEventUrl, setSelectedEventUrl] = useState(null);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -106,6 +115,7 @@ const EventsGrid = () => {
     {
       title: "Quiz",
       description: "Test your knowledge across various domains and prove your intellectual dominance.",
+      tagline: "Trivia for people who correct others on Reddit.",
       rules: "1. No internet access allowed during the contest.\n2. Teams max size of 2.\n3. Four rounds including rapid fire.",
       prize: "₹5,000 + Tech Goodies",
       timing: "Day 1, 10:00 AM",
@@ -116,6 +126,7 @@ const EventsGrid = () => {
     {
       title: "Coding",
       description: "Solve complex algorithmic challenges and show off your programming skills.",
+      tagline: "Hope you like reading StackOverflow.",
       rules: "1. Languages supported: C++, Java, Python.\n2. Individual participation only.\n3. Plagiarism results in instant disqualification.",
       prize: "₹10,000 MVP Award",
       timing: "Day 1, 12:00 PM",
@@ -126,6 +137,7 @@ const EventsGrid = () => {
     {
       title: "Tech Treasure Hunt",
       description: "Follow the clues, solve the puzzles, and race against time to uncover the hidden tech treasure.",
+      tagline: "Cardio for developers. Run.",
       rules: "1. Teams of 3-4 players.\n2. Must navigate the entire campus using cryptologic hints.\n3. Use of QR scanners required.",
       prize: "Mystery Box & Cash Pool",
       timing: "Day 2, 09:00 AM",
@@ -136,6 +148,7 @@ const EventsGrid = () => {
     {
       title: "Ideas and Startup",
       description: "Pitch your innovative startup ideas and get a chance to take them to the next level.",
+      tagline: "Sell us your 'Uber for pets' idea.",
       rules: "1. 5 minutes pitch presentation.\n2. 3 minutes Q&A with investor judges.\n3. Must clearly define revenue model.",
       prize: "₹25,000 Seed Fund grant",
       timing: "Day 2, 02:00 PM",
@@ -146,6 +159,7 @@ const EventsGrid = () => {
     {
       title: "Reel Making",
       description: "Showcase your creativity and video editing skills in our reel making competition.",
+      tagline: "Literally just doing it for the algorithm.",
       rules: "1. Video length: 30s to 60s.\n2. Must encapsulate the fest vibe.\n3. Royalty-free audio only.",
       prize: "Creator Kit & Feature",
       timing: "Post-event submission",
@@ -156,6 +170,7 @@ const EventsGrid = () => {
     {
       title: "Singing / Dancing",
       description: "Take the stage and mesmerize the audience with your incredible singing or dancing talent.",
+      tagline: "Autotune is not allowed. Good luck.",
       rules: "1. Time limit: 4 mins max.\n2. Backing tracks must be submitted a day prior in MP3 format.\n3. Obscenity is strictly prohibited.",
       prize: "Trophy + Spotlight Feature",
       timing: "Day 1, 06:00 PM Main Stage",
@@ -166,6 +181,7 @@ const EventsGrid = () => {
     {
       title: "Blind Coding",
       description: "Write code with your monitor turned off. Rely purely on your logic and muscle memory.",
+      tagline: "Missing a semicolon? You'll never know.",
       rules: "1. Monitors will be powered down.\n2. Compilation allowed only once at the end.\n3. Highest logic accuracy wins.",
       prize: "Premium Mechanical Keyboard",
       timing: "Day 2, 11:30 AM",
@@ -176,6 +192,7 @@ const EventsGrid = () => {
     {
       title: "Gaming",
       description: "Step into the arena, battle it out in intensive gaming tournaments, and claim victory.",
+      tagline: "Sweatpants highly recommended.",
       rules: "1. Valorant & FIFA tournaments.\n2. Own peripherals highly encouraged.\n3. Abusive language results in ban.",
       prize: "₹15,000 Grand Prize Pool",
       timing: "Day 1 & Day 2, All day",
@@ -213,12 +230,47 @@ const EventsGrid = () => {
                   event={event}
                   delay={(index % 4) * 0.15}
                   isMobile={isMobile}
+                  onRegisterClick={setSelectedEventUrl}
                 />
               </div>
             ))}
           </div>
         </div>
       </section>
+
+      {/* IQ Challenge Modal */}
+      {selectedEventUrl && (
+        <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/80 backdrop-blur-md pointer-events-auto">
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            className="bg-[var(--color-dark-bg)] border-2 border-[var(--color-neon-pink)] p-8 max-w-md w-full text-center shadow-[0_0_40px_rgba(255,0,255,0.4)] rounded-xl relative overflow-hidden"
+          >
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,0,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,0,255,0.05)_1px,transparent_1px)] bg-[size:20px_20px] opacity-30 pointer-events-none" />
+            <h2 className="text-2xl font-black text-[var(--color-neon-pink)] mb-2 text-glow-pink relative z-10 uppercase font-[Orbitron]">⚠️ Verify Intellect</h2>
+            <p className="text-white mb-2 text-lg font-medium relative z-10">High IQ required to proceed.</p>
+            <p className="text-gray-400 mb-8 text-sm relative z-10">Are you sure you have what it takes?</p>
+            
+            <div className="flex flex-col sm:flex-row justify-center gap-4 relative z-10">
+              <button 
+                onClick={() => setSelectedEventUrl(null)}
+                className="px-6 py-3 border border-gray-600 text-gray-300 hover:text-white hover:bg-gray-800 uppercase tracking-widest text-xs font-bold transition-all w-full"
+              >
+                Nevermind 🤖
+              </button>
+              <button 
+                onClick={() => {
+                  window.open(selectedEventUrl, '_blank', 'noopener,noreferrer');
+                  setSelectedEventUrl(null);
+                }}
+                className="px-6 py-3 bg-[var(--color-neon-pink)] text-white hover:bg-pink-600 uppercase tracking-widest text-xs font-bold box-glow-pink transition-all w-full"
+              >
+                Prove It 🚀
+              </button>
+            </div>
+          </motion.div>
+        </div>
+      )}
     </>
   );
 };

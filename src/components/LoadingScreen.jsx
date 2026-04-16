@@ -3,12 +3,29 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const LoadingScreen = () => {
   const [loading, setLoading] = useState(true);
+  const [loadingMessageIndex, setLoadingMessageIndex] = useState(0);
+  
+  const loadingMessages = [
+    "Initializing System Core...",
+    "Loading awesomeness...",
+    "Compiling brain cells...",
+    "Downloading RAM...",
+    "Hacking into the mainframe...",
+    "Initializing BYTEOPIA..."
+  ];
+
+  useEffect(() => {
+    const textInterval = setInterval(() => {
+      setLoadingMessageIndex(prev => (prev + 1) % loadingMessages.length);
+    }, 450);
+    return () => clearInterval(textInterval);
+  }, []);
 
   useEffect(() => {
     // Simulate initial loading time
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2800); // 2.8 seconds glitch intro
+    }, 1100); // Greatly reduced loading time for speed
     return () => clearTimeout(timer);
   }, []);
 
@@ -48,9 +65,14 @@ const LoadingScreen = () => {
                />
             </div>
             
-            <p className="text-[var(--color-neon-cyan)] text-xs md:text-sm mt-6 uppercase tracking-[0.3em] animate-pulse">
-              Initializing System Core...
-            </p>
+            <motion.p 
+              key={loadingMessageIndex}
+              initial={{ opacity: 0, y: 5 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-[var(--color-neon-cyan)] text-xs md:text-sm mt-6 uppercase tracking-[0.3em]"
+            >
+              {loadingMessages[loadingMessageIndex]}
+            </motion.p>
           </div>
         </motion.div>
       )}

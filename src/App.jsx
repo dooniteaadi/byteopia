@@ -12,6 +12,7 @@ import BackgroundMusic from './components/BackgroundMusic';
 import LoadingScreen from './components/LoadingScreen';
 import AnnouncementBar from './components/AnnouncementBar';
 import HypeSection from './components/HypeSection';
+import HumorController from './components/HumorController';
 
 function App() {
   useEffect(() => {
@@ -56,6 +57,7 @@ function App() {
 
   return (
     <div className="bg-transparent min-h-screen text-white font-['Poppins'] selection:bg-[var(--color-neon-pink)] selection:text-white relative">
+      <HumorController />
       <LoadingScreen />
       <AnnouncementBar />
       <BackgroundEffects />
