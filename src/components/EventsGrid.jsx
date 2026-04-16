@@ -121,7 +121,7 @@ const EventsGrid = () => {
       timing: "Day 1, 10:00 AM",
       icon: Lightbulb,
       color: "cyan",
-      link: "https://forms.gle/8APrD9KWJ1SWCRh6A"
+      link: "https://docs.google.com/forms/d/e/1FAIpQLSfA0wFd4093AMLC8xt4F1FIeflP5o4m6ZJ3cFBkDu2WJYYPvw/viewform?usp=dialog"
     },
     {
       title: "Coding",
@@ -132,7 +132,7 @@ const EventsGrid = () => {
       timing: "Day 1, 12:00 PM",
       icon: Terminal,
       color: "pink",
-      link: "https://forms.gle/nn55KmQamQK4Rarw5"
+      link: "https://docs.google.com/forms/d/e/1FAIpQLScjnYiVfEUu2RrXwNJXPaGxeekKij3OF2ZEsXM0_J6zrefi4Q/viewform?usp=dialog"
     },
     {
       title: "Tech Treasure Hunt",
@@ -143,7 +143,7 @@ const EventsGrid = () => {
       timing: "Day 2, 09:00 AM",
       icon: Map,
       color: "cyan",
-      link: "https://forms.gle/WUBygAu16TYUqyH49"
+      link: "https://docs.google.com/forms/d/e/1FAIpQLScj89QTw6LOoTginmoXQI-ATByPYZ23P1M5wjGzObo--G1mfQ/viewform?usp=dialog"
     },
     {
       title: "Ideas and Startup",
@@ -154,7 +154,7 @@ const EventsGrid = () => {
       timing: "Day 2, 02:00 PM",
       icon: Rocket,
       color: "pink",
-      link: "https://forms.gle/oXNkXQaoMSerh7wSA"
+      link: "https://docs.google.com/forms/d/e/1FAIpQLSc0L0zwUKBRDWbm4ZrJj3ajqR5C-Yj3lUw9IcBLn8geDv5rFA/viewform?usp=dialog"
     },
     {
       title: "Reel Making",
@@ -165,7 +165,7 @@ const EventsGrid = () => {
       timing: "Post-event submission",
       icon: Video,
       color: "cyan",
-      link: "https://forms.gle/8NPDq1VPr3tfPV4f9"
+      link: "https://docs.google.com/forms/d/e/1FAIpQLScIfEwdYBf7_xssb_OOMBoAbTZGLI8DlU8iD2uLtfJ56FZLfg/viewform?usp=dialog"
     },
     {
       title: "Singing / Dancing",
@@ -176,7 +176,7 @@ const EventsGrid = () => {
       timing: "Day 1, 06:00 PM Main Stage",
       icon: Music,
       color: "pink",
-      link: "https://forms.gle/ofkHdFYA4sZxtozU7"
+      link: "https://docs.google.com/forms/d/e/1FAIpQLSecgbLk26Rxv9Vzu6wMPzsr25F607JWBdcKKizmHlXysBd6CQ/viewform?usp=dialog"
     },
     {
       title: "Blind Coding",
@@ -187,7 +187,7 @@ const EventsGrid = () => {
       timing: "Day 2, 11:30 AM",
       icon: EyeOff,
       color: "cyan",
-      link: "https://forms.gle/XYN7CttJF2TJKxcU6"
+      link: "https://docs.google.com/forms/d/e/1FAIpQLSepv-0N_MD0XaBzA1MIi3-1jbfhdJfMADC0c1Zc-cBHkxY4FQ/viewform?usp=dialog"
     },
     {
       title: "Gaming",
@@ -198,7 +198,7 @@ const EventsGrid = () => {
       timing: "Day 1 & Day 2, All day",
       icon: Gamepad2,
       color: "pink",
-      link: "https://forms.gle/VcRYCLAReKpEu7of6"
+      link: "https://docs.google.com/forms/d/e/1FAIpQLSd8s7foL--zR32gzSR7reuLZftlG1PZNHZDaU8_bLXTA3vAhQ/viewform?usp=dialog"
     }
   ];
 
